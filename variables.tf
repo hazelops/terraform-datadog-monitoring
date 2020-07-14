@@ -1,20 +1,20 @@
-variable "datadog_api_key" {}
+variable "dd_api_key" {}
 
-variable "datadog_app_key" {}
+variable "dd_app_key" {}
 
-variable "env" {
-  default = "testnut"
-}
+variable "env" {}
+
+variable "email" {}
 
 variable "app_name" {
   default = "squibby"
 }
 
-variable "syntetics_tags" {
+variable "synthetics_tags" {
   default = []
 }
 
-variable "syntetics_type" {
+variable "synthetics_type" {
   default = "browser"
 }
 
@@ -22,11 +22,7 @@ variable "synthetics_subtype" {
   default = "web"
 }
 
-variable "synthetics_request" {
-  default= {
-    method = "GET"
-    url = "https://squibby.testnut.nutcorp.net"
-  }
+variable "synthetics_request_url" {
 }
 
 variable "device_type" {
@@ -38,6 +34,12 @@ variable "locations_type" {
 
 }
 
-variable "tick_interval" {
-  default = 300
+variable "dd_options" {
+  default = {
+    tick_every = 300
+  }
 }
+
+//variable "dd_message" {
+//  default = "{{#is_alert}} Website is not available! {{/is_alert}} {{^is_alert}} Website is back to live! {{/is_alert}}"
+//}
