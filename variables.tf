@@ -29,9 +29,6 @@ variable "subtype" {
 //}
 //}
 
-//variable "request_type" {
-//  default = "GET"
-//}
 
 variable "url" {
 }
