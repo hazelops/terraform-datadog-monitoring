@@ -49,7 +49,7 @@ variable "webtest_options" {
 }
 
 variable "dd_message_up" {
-  default = "The problems is gone on:"
+  default = "The problems are gone on:"
 }
 
 variable "dd_message_down" {
