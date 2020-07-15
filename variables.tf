@@ -4,42 +4,94 @@ variable "dd_app_key" {}
 
 variable "env" {}
 
-variable "email" {}
-
-variable "app_name" {
-  default = "squibby"
-}
-
-variable "synthetics_tags" {
+variable "recipient" {
   default = []
 }
 
-variable "synthetics_type" {
+variable "name" {}
+
+variable "tags" {
+  default = []
+}
+
+variable "type" {
   default = "browser"
 }
 
-variable "synthetics_subtype" {
-  default = "web"
+variable "subtype" {
+  default = "http"
 }
 
-variable "synthetics_request_url" {
+//variable "api_request_headers" {
+//  default =  {
+//Content-Type = "application/json"
+//Authentication = "Token: 1234566789"
+//}
+//}
+
+//variable "request_type" {
+//  default = "GET"
+//}
+
+variable "url" {
 }
 
-variable "device_type" {
+variable "device_ids" {
   default = ["laptop_large"]
 }
 
-variable "locations_type" {
+variable "locations" {
   default = ["aws:us-west-1"]
 
 }
 
-variable "dd_options" {
+variable "webtest_options" {
   default = {
     tick_every = 300
   }
 }
 
-//variable "dd_message" {
-//  default = "{{#is_alert}} Website is not available! {{/is_alert}} {{^is_alert}} Website is back to live! {{/is_alert}}"
-//}
+variable "dd_message_up" {
+  default = "The problems is gone on:"
+}
+
+variable "dd_message_down" {
+  default = "There are some problems on:"
+}
+
+variable "api_options" {
+  default = {
+    tick_every = 60
+  }
+}
+
+variable "api_assertions" {
+  default = [
+    {
+      type = "statusCode"
+      operator = "is"
+      target = "200"
+    }
+  ]
+}
+
+variable "ssl_port" {
+  default = "443"
+}
+
+variable "ssl_options" {
+  default = {
+    tick_every = 900
+    accept_self_signed = true
+  }
+}
+
+variable "ssl_assertions" {
+  default = [
+    {
+      type = "certificate"
+      operator = "isInMoreThan"
+      target = 30
+    }
+  ]
+}

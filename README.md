@@ -42,6 +42,5 @@ No output.
 
 ##Usage:
 
-- Clone module
 - Create necessary variables (you can use for example direnv)
 - You can use it standalone (Terraform plan, Terraform apply) or in your infrastructure.
