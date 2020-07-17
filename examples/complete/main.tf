@@ -28,8 +28,7 @@ module "terraform-datadog-monitoring" {
     }
   ]
   synthetics_ssl_port = "443"
-  synthetics_ssl_options =
-  {
+  synthetics_ssl_options = {
     tick_every = 900
     accept_self_signed = true
   }
