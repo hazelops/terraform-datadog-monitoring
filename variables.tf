@@ -1,68 +1,58 @@
-variable "dd_api_key" {}
+variable "api_key" {}
 
-variable "dd_app_key" {}
+variable "app_key" {}
 
 variable "env" {}
 
-variable "recipient" {
+variable "synthetics_recipient" {}
+
+variable "synthetics_name" {}
+
+variable "synthetics_tags" {
   default = []
 }
 
-variable "name" {}
-
-variable "tags" {
-  default = []
-}
-
-variable "type" {
+variable "synthetics_type" {
   default = "browser"
 }
 
-variable "subtype" {
+variable "synthetics_subtype" {
   default = "http"
 }
 
-//variable "api_request_headers" {
-//  default =  {
-//Content-Type = "application/json"
-//Authentication = "Token: 1234566789"
-//}
-//}
-
-
-variable "url" {
+variable "synthetics_url" {
 }
 
-variable "device_ids" {
+variable "synthetics_device_ids" {
   default = ["laptop_large"]
 }
 
-variable "locations" {
+variable "synthetics_locations" {
   default = ["aws:us-west-1"]
 
 }
 
-variable "webtest_options" {
+variable "synthetics_webtest_options" {
   default = {
     tick_every = 300
   }
 }
 
-variable "dd_message_up" {
-  default = "The problems are gone on:"
-}
-
-variable "dd_message_down" {
+variable "synthetics_alert_down" {
   default = "There are some problems on:"
 }
 
-variable "api_options" {
+variable "synthetics_alert_up" {
+  default = "The problems are gone on:"
+}
+
+variable "synthetics_api_options" {
   default = {
     tick_every = 60
   }
 }
 
-variable "api_assertions" {
+variable "synthetics_api_assertions" {
   default = [
     {
       type = "statusCode"
@@ -72,18 +62,18 @@ variable "api_assertions" {
   ]
 }
 
-variable "ssl_port" {
+variable "synthetics_ssl_port" {
   default = "443"
 }
 
-variable "ssl_options" {
+variable "synthetics_ssl_options" {
   default = {
     tick_every = 900
     accept_self_signed = true
   }
 }
 
-variable "ssl_assertions" {
+variable "synthetics_ssl_assertions" {
   default = [
     {
       type = "certificate"
@@ -91,4 +81,8 @@ variable "ssl_assertions" {
       target = 30
     }
   ]
+}
+
+variable "synthetics_status" {
+  default = "live"
 }
