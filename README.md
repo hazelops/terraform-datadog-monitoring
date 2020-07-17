@@ -8,55 +8,56 @@
 
 ## Usage:
 
-1. Create necessary variables.
-2. There are three operating modes: ```test_browser```, ```test_api```, ```test_api/ssl```. 
+  Create necessary variables.
+
+  There are three operating modes: ```test_browser```, ```test_api```, ```test_api/ssl```. 
  - to choose ```test_api``` mode you should pass variables (```synthetics_type=api``` and ```synthetics_subtype=http```)
  - to choose ```test_api/ssl``` mode you should pass variables (```synthetics_type=api``` and ```synthetics_subtype=ssl```)
- - to choose ```browser test```(it runs by default in minimal configuration) you should pass variable (```synthetics_type=browser```) 
+ - to choose ```browser test```(it runs by default in minimal configuration) you should pass variable (```synthetics_type=browser```)
+  
+  You can use examples.
 
+## Examples:
 
-##Examples:
-
-####Minimal:
-```module "terraform-datadog-monitoring" {
-  source = "/hazelops/synthetics/datadog"
+#### Minimal:
+```
+ module "terraform-datadog-monitoring" {
+  source = "hazelops/monitoring/datadog"
   version = "~> 1.0"
-  api_key = 1234567890
-  app_key = 0987654321
+  api_key = "1234567890"
+  app_key = "0987654321"
   env = "test"
   synthetics_name = "test"
   synthetics_recipient = "@john@test.com" 
-  synthetics_url = "htpp://test.com"
+  synthetics_url = "http://test.com"
 }
 ```
 
-####Complete:
-```module "terraform-datadog-monitoring" {
-     source = "/hazelops/synthetics/datadog"
+#### Complete:
+```
+    module "terraform-datadog-monitoring" {
+     source = "hazelops/monitoring/datadog"
      version = "~> 1.0"
-     api_key = 1234567890
-     app_key = 0987654321
+     api_key = "1234567890"
+     app_key = "0987654321"
      env = "test"
      synthetics_name = "test"
      synthetics_recipient = "@john@test.com"
-     synthetics_url = "htpp://test.com"
-     synthetics_tags = [test1,test2]
+     synthetics_url = "http://test.com"
+     synthetics_tags = ["test1", "test2"]
      synthetics_type = "browser"
      synthetics_subtype = "http"
      synthetics_device_ids = ["laptop_large"]
      synthetics_locations = ["aws:us-west-1"]
-     synthetics_webtest_options =
-     {
+     synthetics_webtest_options = {
        tick_every = 300
      }
      synthetics_alert_down = "There are some problems on:"
      synthetics_alert_up = "The problems are gone on:"
-     synthetics_api_options =
-     {
+     synthetics_api_options = {
        tick_every = 60
      }
-     synthetics_api_assertions =
-     [
+     synthetics_api_assertions = [
        {
          type = "statusCode"
          operator = "is"
@@ -64,13 +65,11 @@
        }
      ]
      synthetics_ssl_port = "443"
-     synthetics_ssl_options =
-     {
+     synthetics_ssl_options = {
        tick_every = 900
        accept_self_signed = true
      }
-     synthetics_ssl_assertions =
-     [
+     synthetics_ssl_assertions = [
        {
          type = "certificate"
          operator = "isInMoreThan"
@@ -84,13 +83,13 @@
 ## Requirements
 
 
-### Providers
+#### Providers
 
 | Name | Version |
 |------|---------|
 | datadog | n/a |
 
-### Inputs
+#### Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -115,7 +114,7 @@
 | synthetics\_url | n/a | `any` | n/a | yes |
 | synthetics\_webtest\_options | n/a | `map` | <pre>{<br>  "tick_every": 300<br>}</pre> | no |
 
-### Outputs
+#### Outputs
 
 No output
 

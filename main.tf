@@ -1,8 +1,3 @@
-# Configure the Datadog provider
-provider "datadog" {
-  api_key = var.api_key
-  app_key = var.app_key
-}
 
 # Create Datadog synthetics browser site availability test
 resource "datadog_synthetics_test" "test_browser" {

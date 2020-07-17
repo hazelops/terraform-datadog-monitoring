@@ -86,3 +86,4 @@ variable "synthetics_ssl_assertions" {
 variable "synthetics_status" {
   default = "live"
 }
+
