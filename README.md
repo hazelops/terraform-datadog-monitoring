@@ -1,7 +1,7 @@
 # Terraform datadog synthetics monitor
 
 ## This module:
-- Creates datadog website synthetics ```browser test```, ```api test``` and ```api test with SSL``` in Datadog. 
+- Creates datadog website synthetics `browser test`, `api test` and `api test with SSL` in Datadog. 
 - You can monitor information in your Datadog account.
 - You will receive messages about changing the status.
 
@@ -10,10 +10,10 @@
 
   Create necessary variables.
 
-  There are three operating modes: ```test_browser```, ```test_api```, ```test_api/ssl```. 
- - to choose ```test_api``` mode you should pass variables (```synthetics_type=api``` and ```synthetics_subtype=http```)
- - to choose ```test_api/ssl``` mode you should pass variables (```synthetics_type=api``` and ```synthetics_subtype=ssl```)
- - to choose ```browser test```(it runs by default in minimal configuration) you should pass variable (```synthetics_type=browser```)
+  There are three operating modes: `test_browser`, `test_api`, `test_api/ssl`. 
+ - to choose `test_api` mode you should pass variables (`synthetics_type=api` and `synthetics_subtype=http`)
+ - to choose `test_api/ssl` mode you should pass variables (`synthetics_type=api` and `synthetics_subtype=ssl`)
+ - to choose `browser test`(it runs by default in minimal configuration) you should pass variable (`synthetics_type=browser`)
   
   You can use examples.
 
@@ -22,10 +22,10 @@
 #### Minimal:
 ```
    provider "datadog" {
-      api_key = "1234567890"
-      app_key = "0987654321"
+    api_key = "1234567890"
+    app_key = "0987654321"
    }
-   module "terraform-datadog-monitoring" {
+   module "terraform_datadog_monitoring" {
     source = "hazelops/monitoring/datadog"
     version = "~> 1.0"
     api_key = "1234567890"
@@ -34,16 +34,16 @@
     synthetics_name = "test"
     synthetics_recipient = "@john@test.com" 
     synthetics_url = "http://test.com"
-    }
+   }
 ```
 
 #### Complete:
 ```
     provider "datadog" {
-      api_key = "1234567890"
-      app_key = "0987654321"
+       api_key = "1234567890"
+       app_key = "0987654321"
     }
-    module "terraform-datadog-monitoring" {
+    module "terraform_datadog_monitoring" {
      source = "hazelops/monitoring/datadog"
      version = "~> 1.0"
      api_key = "1234567890"
@@ -58,34 +58,34 @@
      synthetics_device_ids = ["laptop_large"]
      synthetics_locations = ["aws:us-west-1"]
      synthetics_webtest_options = {
-       tick_every = 300
-     }
+        tick_every = 300
+      }
      synthetics_alert_down = "There are some problems on:"
      synthetics_alert_up = "The problems are gone on:"
      synthetics_api_options = {
-       tick_every = 60
+        tick_every = 60
      }
      synthetics_api_assertions = [
-       {
-         type = "statusCode"
-         operator = "is"
-         target = "200"
-       }
+      {
+        type = "statusCode"
+        operator = "is"
+        target = "200"
+      }
      ]
      synthetics_ssl_port = "443"
      synthetics_ssl_options = {
-       tick_every = 900
-       accept_self_signed = true
+        tick_every = 900
+        accept_self_signed = true
      }
      synthetics_ssl_assertions = [
        {
-         type = "certificate"
-         operator = "isInMoreThan"
-         target = 30
+        type = "certificate"
+        operator = "isInMoreThan"
+        target = 30
        }
      ]
      synthetics_status = "live"
-     }
+    }
 ```
 
 ## Providers
@@ -98,8 +98,6 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| api\_key | n/a | `any` | n/a | yes |
-| app\_key | n/a | `any` | n/a | yes |
 | env | n/a | `any` | n/a | yes |
 | synthetics\_alert\_down | n/a | `string` | `"There are some problems on:"` | no |
 | synthetics\_alert\_up | n/a | `string` | `"The problems are gone on:"` | no |

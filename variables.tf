@@ -1,7 +1,3 @@
-variable "api_key" {}
-
-variable "app_key" {}
-
 variable "env" {}
 
 variable "synthetics_recipient" {}
