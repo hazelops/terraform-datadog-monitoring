@@ -21,20 +21,28 @@
 
 #### Minimal:
 ```
- module "terraform-datadog-monitoring" {
-  source = "hazelops/monitoring/datadog"
-  version = "~> 1.0"
-  api_key = "1234567890"
-  app_key = "0987654321"
-  env = "test"
-  synthetics_name = "test"
-  synthetics_recipient = "@john@test.com" 
-  synthetics_url = "http://test.com"
-}
+   provider "datadog" {
+      api_key = "1234567890"
+      app_key = "0987654321"
+   }
+   module "terraform-datadog-monitoring" {
+    source = "hazelops/monitoring/datadog"
+    version = "~> 1.0"
+    api_key = "1234567890"
+    app_key = "0987654321"
+    env = "test"
+    synthetics_name = "test"
+    synthetics_recipient = "@john@test.com" 
+    synthetics_url = "http://test.com"
+    }
 ```
 
 #### Complete:
 ```
+    provider "datadog" {
+      api_key = "1234567890"
+      app_key = "0987654321"
+    }
     module "terraform-datadog-monitoring" {
      source = "hazelops/monitoring/datadog"
      version = "~> 1.0"
@@ -80,16 +88,13 @@
      }
 ```
 
-## Requirements
-
-
-#### Providers
+## Providers
 
 | Name | Version |
 |------|---------|
 | datadog | n/a |
 
-#### Inputs
+## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -114,11 +119,9 @@
 | synthetics\_url | n/a | `any` | n/a | yes |
 | synthetics\_webtest\_options | n/a | `map` | <pre>{<br>  "tick_every": 300<br>}</pre> | no |
 
-#### Outputs
+## Outputs
 
-No output
-
-## Terraform Module Registry
+No output.
 
 ![Hazelops logo](https://avatars0.githubusercontent.com/u/63737915?s=25&v=4) [Terraform Datadog Synthetics
 ](https://registry.terraform.io/modules/hazelops/synthetics/datadog)
