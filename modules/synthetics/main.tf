@@ -1,4 +1,3 @@
-
 # Create Datadog synthetics browser site availability test
 resource "datadog_synthetics_test" "test_browser" {
   count = (var.synthetics_type == "browser") ? 1 : 0

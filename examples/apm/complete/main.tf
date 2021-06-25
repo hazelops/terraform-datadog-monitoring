@@ -1,6 +1,7 @@
 module "apm_monitor" {
   source                     = "hazelops/alerts/datadog"
-  enabled                    = true
+  latency_enabled            = true
+  errors_enabled             = true
   env                        = "dev"
   namespace                  = "namespace"
   service_name               = "YourServiceName"

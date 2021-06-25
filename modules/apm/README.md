@@ -1,9 +1,6 @@
 # Terraform Datadog APM Monitors
 
-
-
 Terraform module that creates Datadog alert monitors for latency and errors.
-
 
 ## Description
 
