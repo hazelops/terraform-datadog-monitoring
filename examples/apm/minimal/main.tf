@@ -1,5 +1,5 @@
 module "apm_monitor" {
-  source       = "hazelops/alerts/datadog"
+  source       = "hazelops/monitoring/datadog//modules/apm"
   dd_api_key   = "Datadog API Key"
   dd_app_key   = "Datadog APP Key"
   env          = "dev"
