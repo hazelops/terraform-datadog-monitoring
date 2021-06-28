@@ -1,5 +1,8 @@
 module "apm_monitor" {
   source                     = "hazelops/alerts/datadog"
+  dd_api_key                 = "Datadog API Key"
+  dd_app_key                 = "Datadog APP Key"
+  enabled                    = true
   latency_enabled            = true
   errors_enabled             = true
   env                        = "dev"

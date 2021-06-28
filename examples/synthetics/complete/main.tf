@@ -1,7 +1,9 @@
-
 module "terraform_datadog_monitoring" {
-  source          = "hazelops/monitoring/datadog"
+  source          = "hazelops/monitoring/datadog//modules/synthetics"
   version         = "~> 1.0"
+  enabled         = true
+  dd_api_key      = "Datadog API Key"
+  dd_app_key      = "Datadog APP Key"
   env             = "test"
   synthetics_name = "test"
   target_names = [

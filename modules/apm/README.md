@@ -1,6 +1,6 @@
 # Terraform Datadog APM Monitors
 
-Terraform module that creates Datadog alert monitors for latency and errors.
+Terraform submodule that creates Datadog alert monitors for latency and errors.
 
 ## Description
 
@@ -10,24 +10,22 @@ This module provides settings:
 
 ## Usage
 
-Before start, you should provide two keys with corresponding values in AWS SSM Parameter store:
-
-```/your_env/global/DD_API_KEY```
-
-```/your_env/global/DD_APP_KEY```
+Before start, you should get Datadog API key and Datadog APP key from Datadog website.
 
 To get the keys please follow this [manual](https://docs.datadoghq.com/account_management/api-app-keys/)
-
-For more information please visit this [site](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html)
 
 ### Miminal setup
 
 ```hcl
 module "apm_monitor" {
-  source       = "hazelops/alerts/datadog"
+  source       = "hazelops/monitoring/datadog//modules/apm"
+  dd_api_key = "Datadog API Key"
+  dd_app_key = "Datadog APP Key"
   env          = var.env
   namespace    = var.namespace
-  service_name = "YourServiceName"
+  dd_api_key   = "Datadog API Key"
+  dd_app_key   = "Datadog APP Key"
+  service_name = "Your Service Name"
   target_names = [
     "@slack-alerts",
     "@user:some@email.com"
@@ -39,8 +37,12 @@ module "apm_monitor" {
 
 ```hcl
 module "apm_monitor" {
-  source                     = "hazelops/alerts/datadog"
+  source                     = "hazelops/monitoring/datadog//modules/apm"
   enabled                    = true
+  errors_enabled             = true
+  latency_enabled            = true
+  dd_api_key                 = "Datadog API Key"
+  dd_app_key                 = "Datadog APP Key"
   env                        = var.env
   namespace                  = var.namespace
   service_name               = "YourServiceName"
@@ -71,7 +73,6 @@ module "apm_monitor" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 | <a name="provider_datadog"></a> [datadog](#provider\_datadog) | ~> 3.1 |
 
 ## Modules
@@ -84,19 +85,21 @@ No modules.
 |------|------|
 | [datadog_monitor.error_rate_monitor](https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/monitor) | resource |
 | [datadog_monitor.latency_monitor](https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/monitor) | resource |
-| [aws_ssm_parameter.datadog_api_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) | data source |
-| [aws_ssm_parameter.datadog_app_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_dd_api_key"></a> [dd\_api\_key](#input\_dd\_api\_key) | n/a | `any` | n/a | yes |
+| <a name="input_dd_app_key"></a> [dd\_app\_key](#input\_dd\_app\_key) | n/a | `any` | n/a | yes |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | n/a | `bool` | `true` | no |
-| <a name="input_env"></a> [env](#input\_env) | n/a | `string` | `"dev"` | no |
+| <a name="input_env"></a> [env](#input\_env) | n/a | `any` | n/a | yes |
 | <a name="input_error_alert_threshold"></a> [error\_alert\_threshold](#input\_error\_alert\_threshold) | The value used to trigger an alert notification. For more info visit https://docs.datadoghq.com/monitors/monitor_types/metric/?tab=threshold#thresholds | `string` | `"> 0.05"` | no |
 | <a name="input_error_metric"></a> [error\_metric](#input\_error\_metric) | Select metric to track. For more info visit https://docs.datadoghq.com/metrics/ | `string` | `"trace.flask.request"` | no |
 | <a name="input_error_threshold_duration"></a> [error\_threshold\_duration](#input\_error\_threshold\_duration) | Timeframe during which the comparison is made. | `string` | `"last_10m"` | no |
+| <a name="input_errors_enabled"></a> [errors\_enabled](#input\_errors\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_latency_alert_threshold"></a> [latency\_alert\_threshold](#input\_latency\_alert\_threshold) | The value used to trigger an alert notification. For more info visit https://docs.datadoghq.com/monitors/monitor_types/metric/?tab=threshold#thresholds | `string` | `"> 0.5"` | no |
+| <a name="input_latency_enabled"></a> [latency\_enabled](#input\_latency\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_latency_metric"></a> [latency\_metric](#input\_latency\_metric) | Select metric to track. For more info, visit https://docs.datadoghq.com/metrics/ | `string` | `"trace.flask.request"` | no |
 | <a name="input_latency_threshold_duration"></a> [latency\_threshold\_duration](#input\_latency\_threshold\_duration) | Timeframe during which the comparison is made. | `string` | `"last_10m"` | no |
 | <a name="input_monitor_type"></a> [monitor\_type](#input\_monitor\_type) | The type of the monitor. For more info visit https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/monitor | `string` | `"metric alert"` | no |
@@ -111,4 +114,4 @@ No outputs.
 <!-- END OF GENERATED BY TERRAFORM-DOCS -->
 
 
-![Hazelops logo](https://avatars0.githubusercontent.com/u/63737915?s=25&v=4) Terraform Datadog Alerts
+![Hazelops logo](https://avatars0.githubusercontent.com/u/63737915?s=25&v=4) Terraform Datadog APM Monitoring

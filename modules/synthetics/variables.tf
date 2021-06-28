@@ -1,8 +1,20 @@
 variable "env" {}
 
+variable "dd_api_key" {
+  description = "Datadog API Key. You can find out how to get it here: https://docs.datadoghq.com/account_management/api-app-keys/"
+}
+
+variable "dd_app_key" {
+  description = "Datadog APP Key. You can find out how to get it here: https://docs.datadoghq.com/account_management/api-app-keys/"
+}
+
 variable "target_names" {
   description = "List of targets to inform. For example it could be @slack-alerts or @user:name@somemail.com. For more info visit https://docs.datadoghq.com/monitors/notifications/?tab=is_alert#notifications"
   type        = list
+}
+
+variable "enabled" {
+  default = true
 }
 
 variable "synthetics_name" {}
@@ -37,11 +49,11 @@ variable "synthetics_webtest_options" {
   }
 }
 
-variable "synthetics_alert_down" {
+variable "synthetics_alert_down_message" {
   default = "There are some problems on:"
 }
 
-variable "synthetics_alert_up" {
+variable "synthetics_alert_up_message" {
   default = "The problems are gone on:"
 }
 
@@ -54,9 +66,9 @@ variable "synthetics_api_options" {
 variable "synthetics_api_assertions" {
   default = [
     {
-      type = "statusCode"
+      type     = "statusCode"
       operator = "is"
-      target = "200"
+      target   = "200"
     }
   ]
 }
@@ -67,7 +79,7 @@ variable "synthetics_ssl_port" {
 
 variable "synthetics_ssl_options" {
   default = {
-    tick_every = 900
+    tick_every         = 900
     accept_self_signed = true
   }
 }
@@ -75,9 +87,9 @@ variable "synthetics_ssl_options" {
 variable "synthetics_ssl_assertions" {
   default = [
     {
-      type = "certificate"
+      type     = "certificate"
       operator = "isInMoreThan"
-      target = 30
+      target   = 30
     }
   ]
 }
@@ -85,4 +97,3 @@ variable "synthetics_ssl_assertions" {
 variable "synthetics_status" {
   default = "live"
 }
-

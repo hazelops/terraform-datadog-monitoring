@@ -1,11 +1,8 @@
-variable "env" {
-  default = "dev"
+variable "env" {}
+
+variable "enabled" {
+  default = true
 }
-
-variable "namespace" {}
-
-variable "service_name" {}
-
 variable "latency_enabled" {
   default = true
 }
@@ -13,6 +10,18 @@ variable "latency_enabled" {
 variable "errors_enabled" {
   default = true
 }
+
+variable "dd_api_key" {
+  description = "Datadog API Key. You can find out how to get it here: https://docs.datadoghq.com/account_management/api-app-keys/"
+}
+
+variable "dd_app_key" {
+  description = "Datadog APP Key. You can find out how to get it here: https://docs.datadoghq.com/account_management/api-app-keys/"
+}
+
+variable "namespace" {}
+
+variable "service_name" {}
 
 variable "monitor_type" {
   description = "The type of the monitor. For more info visit https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/monitor"
