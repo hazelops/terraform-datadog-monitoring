@@ -8,14 +8,12 @@
 
 ## Usage:
 
-  Create necessary variables.
-
-  There are three operating modes: `test_browser`, `test_api`, `test_api/ssl`. 
+ There are three operating modes: `test_browser`, `test_api`, `test_api/ssl`. 
  - to choose `test_api` mode you should pass variables (`synthetics_type=api` and `synthetics_subtype=http`)
  - to choose `test_api/ssl` mode you should pass variables (`synthetics_type=api` and `synthetics_subtype=ssl`)
  - to choose `browser test`(it runs by default in minimal configuration) you should pass variable (`synthetics_type=browser`)
   
-  You can use examples.
+  You can use [examples](./../../examples/synthetics).
 
 ## Examples:
 
