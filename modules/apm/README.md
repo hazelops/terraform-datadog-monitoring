@@ -28,7 +28,7 @@ module "apm_monitor" {
   service_name = "Your Service Name"
   target_names = [
     "@slack-alerts",
-    "@user:some@email.com"
+    "@user:user@somemail.com"
   ]
 }  
 ```
@@ -45,7 +45,7 @@ module "apm_monitor" {
   dd_app_key                 = "Datadog APP Key"
   env                        = var.env
   namespace                  = var.namespace
-  service_name               = "YourServiceName"
+  service_name               = "Your Service Name"
   monitor_type               = "metric alert"
   latency_metric             = "trace.flask.request"
   latency_threshold_duration = "last_10m"
@@ -55,7 +55,7 @@ module "apm_monitor" {
   error_alert_threshold      = "> 0.05"
   target_names = [
     "@slack-alerts",
-    "@user:some@email.com"
+    "@user:user@somemail.com"
   ]
 }
 ```

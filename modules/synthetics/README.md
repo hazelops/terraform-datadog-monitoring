@@ -27,7 +27,7 @@ module "datadog_synthetics" {
   dd_app_key      = "Datadog APP Key"
   env             = "Your Environment"
   synthetics_name = "Name Your Test"
-  synthetics_url  = "https://Some.url"
+  synthetics_url  = "https://someurl.com"
   target_names = [
     "@slack-alerts",
     "@user:user@somemail.com"
@@ -44,7 +44,7 @@ module "datadog_synthetics_test" {
   dd_app_key                        = "Datadog APP Key"
   env                               = "Your Environment"
   synthetics_name                   = "Name Your Test"
-  synthetics_url                    = "https://SomeURL.com"
+  synthetics_url                    = "https://someurl.com"
   synthetics_type                   = "browser"
   synthetics_subtype                = "laptop_large"
   synthetics_locations              = ["aws:us-west-1"]
