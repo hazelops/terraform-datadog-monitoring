@@ -1,13 +1,13 @@
-module "apm_monitor" {
+module "datadog_apm_monitor" {
   source                     = "hazelops/monitoring/datadog//modules/apm"
   dd_api_key                 = "Datadog API Key"
   dd_app_key                 = "Datadog APP Key"
   enabled                    = true
   latency_enabled            = true
   errors_enabled             = true
-  env                        = "dev"
-  namespace                  = "namespace"
-  service_name               = "YourServiceName"
+  env                        = "Your Environment"
+  namespace                  = "Your Namespace"
+  service_name               = "Your Service Name"
   monitor_type               = "metric alert"
   latency_metric             = "trace.flask.request"
   latency_threshold_duration = "last_10m"

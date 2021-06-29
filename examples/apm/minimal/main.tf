@@ -1,12 +1,12 @@
-module "apm_monitor" {
+module "datadog_apm_monitor" {
   source       = "hazelops/monitoring/datadog//modules/apm"
   dd_api_key   = "Datadog API Key"
   dd_app_key   = "Datadog APP Key"
-  env          = "dev"
-  namespace    = "namespace"
-  service_name = "YourServiceName"
+  env          = "Your Environment"
+  namespace    = "Namespace"
+  service_name = "Your Service Name"
   target_names = [
     "@slack-alerts",
-    "@user:Some@Email.com"
+    "@user:user@somemail.com"
   ]
 }

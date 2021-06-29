@@ -1,12 +1,12 @@
-module "terraform_datadog_monitoring" {
+module "datadog_synthetics" {
   source          = "hazelops/monitoring/datadog//modules/synthetics"
   dd_api_key      = "Datadog API Key"
   dd_app_key      = "Datadog APP Key"
-  env             = "test"
-  synthetics_name = "test"
+  env             = "Your Environment"
+  synthetics_name = "Name Your Test"
+  synthetics_url  = "https://some.url"
   target_names = [
     "@slack-alerts",
-    "@user:Some@Email.com"
+    "@user:user@somemail.com"
   ]
-  synthetics_url = "http://test.com"
 }
