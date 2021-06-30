@@ -3,7 +3,7 @@ module "datadog_synthetics" {
   dd_api_key     = "Datadog API Key"
   dd_app_key     = "Datadog APP Key"
   env            = "your-environment"
-  name           = "your-test-name"
+  name           = "Frontend Test"
   service_name   = "your-service"
   synthetics_url = "https://someurl.com"
   target_names = [

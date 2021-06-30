@@ -6,7 +6,6 @@ module "datadog_apm_monitor" {
   latency_enabled            = true
   errors_enabled             = true
   env                        = "your-environment"
-  name                       = "your-test-name"
   service_name               = "your-service"
   monitor_type               = "metric alert"
   latency_metric             = "trace.flask.request"
