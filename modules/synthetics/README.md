@@ -24,7 +24,8 @@ module "datadog_synthetics" {
   dd_api_key      = "Datadog API Key"
   dd_app_key      = "Datadog APP Key"
   env             = "Your Environment"
-  synthetics_name = "Name Your Test"
+  name            = "Name Your Test"
+  service_name    = "Name Of Your Service"
   synthetics_url  = "https://someurl.com"
   target_names = [
     "@slack-alerts",
@@ -41,7 +42,8 @@ module "datadog_synthetics_test" {
   dd_api_key                        = "Datadog API Key"
   dd_app_key                        = "Datadog APP Key"
   env                               = "Your Environment"
-  synthetics_name                   = "Name Your Test"
+  name                              = "Name Your Test"
+  service_name                      = "Name Of Your Service"
   synthetics_url                    = "https://someurl.com"
   synthetics_type                   = "browser"
   synthetics_subtype                = "laptop_large"
@@ -106,6 +108,8 @@ No modules.
 | <a name="input_dd_app_key"></a> [dd\_app\_key](#input\_dd\_app\_key) | Datadog APP Key. You can find out how to get it here: https://docs.datadoghq.com/account_management/api-app-keys/ | `any` | n/a | yes |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_env"></a> [env](#input\_env) | n/a | `any` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | n/a | `any` | n/a | yes |
+| <a name="input_service_name"></a> [service\_name](#input\_service\_name) | n/a | `any` | n/a | yes |
 | <a name="input_ssl_assertion_operator"></a> [ssl\_assertion\_operator](#input\_ssl\_assertion\_operator) | n/a | `string` | `"isInMoreThan"` | no |
 | <a name="input_ssl_assertion_target"></a> [ssl\_assertion\_target](#input\_ssl\_assertion\_target) | n/a | `number` | `30` | no |
 | <a name="input_ssl_assertion_type"></a> [ssl\_assertion\_type](#input\_ssl\_assertion\_type) | n/a | `string` | `"certificate"` | no |
@@ -113,7 +117,6 @@ No modules.
 | <a name="input_synthetics_alert_up_message"></a> [synthetics\_alert\_up\_message](#input\_synthetics\_alert\_up\_message) | n/a | `string` | `"The problems are gone on:"` | no |
 | <a name="input_synthetics_device_ids"></a> [synthetics\_device\_ids](#input\_synthetics\_device\_ids) | n/a | `list` | <pre>[<br>  "laptop_large"<br>]</pre> | no |
 | <a name="input_synthetics_locations"></a> [synthetics\_locations](#input\_synthetics\_locations) | n/a | `list` | <pre>[<br>  "aws:us-west-1"<br>]</pre> | no |
-| <a name="input_synthetics_name"></a> [synthetics\_name](#input\_synthetics\_name) | n/a | `any` | n/a | yes |
 | <a name="input_synthetics_ssl_accept_self_signed"></a> [synthetics\_ssl\_accept\_self\_signed](#input\_synthetics\_ssl\_accept\_self\_signed) | n/a | `bool` | `true` | no |
 | <a name="input_synthetics_ssl_port"></a> [synthetics\_ssl\_port](#input\_synthetics\_ssl\_port) | n/a | `string` | `"443"` | no |
 | <a name="input_synthetics_ssl_request_frequency"></a> [synthetics\_ssl\_request\_frequency](#input\_synthetics\_ssl\_request\_frequency) | n/a | `number` | `900` | no |
