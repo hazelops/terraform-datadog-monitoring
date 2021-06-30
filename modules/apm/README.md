@@ -19,16 +19,14 @@ To get the keys please follow this [manual](https://docs.datadoghq.com/account_m
 ```hcl
 module "apm_monitor" {
   source       = "hazelops/monitoring/datadog//modules/apm"
-  dd_api_key = "Datadog API Key"
-  dd_app_key = "Datadog APP Key"
-  env          = var.env
-  namespace    = var.namespace
   dd_api_key   = "Datadog API Key"
   dd_app_key   = "Datadog APP Key"
-  service_name = "Your Service Name"
+  env          = "your-environment"
+  namespace    = "your-namespace"
+  service_name = "your-service"
   target_names = [
     "@slack-alerts",
-    "@user:user@somemail.com"
+    "@user@somemail.com"
   ]
 }  
 ```
@@ -43,9 +41,9 @@ module "apm_monitor" {
   latency_enabled            = true
   dd_api_key                 = "Datadog API Key"
   dd_app_key                 = "Datadog APP Key"
-  env                        = var.env
-  namespace                  = var.namespace
-  service_name               = "Your Service Name"
+  env                        = "your-environment"
+  namespace                  = "your-namespace"
+  service_name               = "your-service"
   monitor_type               = "metric alert"
   latency_metric             = "trace.flask.request"
   latency_threshold_duration = "last_10m"
@@ -55,7 +53,7 @@ module "apm_monitor" {
   error_alert_threshold      = "> 0.05"
   target_names = [
     "@slack-alerts",
-    "@user:user@somemail.com"
+    "@user@somemail.com"
   ]
 }
 ```

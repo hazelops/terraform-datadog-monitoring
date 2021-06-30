@@ -9,7 +9,7 @@ resource "datadog_monitor" "latency_monitor" {
   tags = [
     "env:${var.env}",
     "service:${var.service_name}",
-    "Managed by Terraform"
+    "terraform:true"
   ]
   message = <<EOM
 {{#is_no_data}}Not receiving data on ${var.env}:${var.service_name}{{/is_no_data}}
@@ -30,7 +30,7 @@ resource "datadog_monitor" "error_rate_monitor" {
   tags = [
     "env:${var.env}",
     "service:${var.service_name}",
-    "Managed by Terraform"
+    "terraform:true"
   ]
   message = <<EOM
 {{#is_no_data}}Not receiving data on ${var.env}:${var.service_name}{{/is_no_data}}

@@ -1,7 +1,7 @@
 # Create Datadog synthetics browser site availability test
 resource "datadog_synthetics_test" "test_browser" {
   count = (var.enabled && var.synthetics_type == "browser") ? 1 : 0
-  name  = "Browser test on ${var.synthetics_url}"
+  name  = var.name
   type  = "browser"
   request_definition {
     method = "GET"
@@ -20,8 +20,8 @@ ${join(" ", var.target_names)}
 EOM
   tags = [
     "env:${var.env}",
-    "service:${var.synthetics_name}",
-    "Managed by Terraform"
+    "service:${var.service_name}",
+    "terraform:true"
   ]
   status = var.synthetics_status
 }
@@ -29,7 +29,7 @@ EOM
 # Create Datadog synthetics api/http test
 resource "datadog_synthetics_test" "test_api" {
   count   = (var.enabled && var.synthetics_type == "api" && var.synthetics_subtype == "http") ? 1 : 0
-  name    = "API test on ${var.synthetics_url}"
+  name    = var.name
   type    = var.synthetics_type
   subtype = var.synthetics_subtype
   request_definition {
@@ -53,8 +53,8 @@ ${join(" ", var.target_names)}
 EOM
   tags = [
     "env:${var.env}",
-    "service:${var.synthetics_name}",
-    "Managed by Terraform"
+    "service:${var.service_name}",
+    "terraform:true"
   ]
   status = var.synthetics_status
 }
@@ -62,7 +62,7 @@ EOM
 # Create Datadog synthetics api/ssl test
 resource "datadog_synthetics_test" "test_ssl" {
   count   = (var.enabled && var.synthetics_type == "api" && var.synthetics_subtype == "ssl") ? 1 : 0
-  name    = "API/SSL test on ${var.synthetics_url}"
+  name    = var.name
   type    = var.synthetics_type
   subtype = var.synthetics_subtype
   request_definition {
@@ -87,8 +87,8 @@ ${join(" ", var.target_names)}
 EOM
   tags = [
     "env:${var.env}",
-    "service:${var.synthetics_name}",
-    "Managed by Terraform"
+    "service:${var.service_name}",
+    "terraform:true"
   ]
   status = var.synthetics_status
 }

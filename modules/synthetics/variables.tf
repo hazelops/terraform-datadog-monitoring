@@ -12,12 +12,14 @@ variable "dd_app_key" {
   description = "Datadog APP Key. You can find out how to get it here: https://docs.datadoghq.com/account_management/api-app-keys/"
 }
 
+variable "name" {}
+
+variable "service_name" {}
+
 variable "target_names" {
   description = "List of targets to inform. For example it could be @slack-alerts or @user:name@somemail.com. For more info visit https://docs.datadoghq.com/monitors/notifications/?tab=is_alert#notifications"
   type        = list
 }
-
-variable "synthetics_name" {}
 
 variable "synthetics_url" {}
 
