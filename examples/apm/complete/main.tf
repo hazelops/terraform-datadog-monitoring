@@ -5,9 +5,9 @@ module "datadog_apm_monitor" {
   enabled                    = true
   latency_enabled            = true
   errors_enabled             = true
-  env                        = "Your Environment"
-  namespace                  = "Your Namespace"
-  service_name               = "Your Service Name"
+  env                        = "your-environment"
+  name                       = "your-test-name"
+  service_name               = "your-service"
   monitor_type               = "metric alert"
   latency_metric             = "trace.flask.request"
   latency_threshold_duration = "last_10m"
@@ -17,6 +17,6 @@ module "datadog_apm_monitor" {
   error_alert_threshold      = "> 0.05"
   target_names = [
     "@slack-alerts",
-    "@user:some@email.com"
+    "@user@somemail.com"
   ]
 }

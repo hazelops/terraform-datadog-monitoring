@@ -3,9 +3,9 @@ module "datadog_synthetics_test" {
   enabled                           = true
   dd_api_key                        = "Datadog API Key"
   dd_app_key                        = "Datadog APP Key"
-  env                               = "Your Environment"
-  name                              = "Name Your Test"
-  service_name                      = "Name Of Your Service"
+  env                               = "your-environment"
+  name                              = "your-test-name"
+  service_name                      = "your-service"
   synthetics_url                    = "https://someurl.com"
   synthetics_type                   = "browser"
   synthetics_subtype                = "laptop_large"
@@ -27,6 +27,6 @@ module "datadog_synthetics_test" {
   synthetics_status                 = "live"
   target_names = [
     "@slack-alerts",
-    "@user:user@somemail.com"
+    "@user@somemail.com"
   ]
 }

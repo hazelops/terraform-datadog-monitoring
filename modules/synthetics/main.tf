@@ -21,7 +21,7 @@ EOM
   tags = [
     "env:${var.env}",
     "service:${var.service_name}",
-    "Managed by Terraform"
+    "terraform:true"
   ]
   status = var.synthetics_status
 }
@@ -54,7 +54,7 @@ EOM
   tags = [
     "env:${var.env}",
     "service:${var.service_name}",
-    "Managed by Terraform"
+    "terraform:true"
   ]
   status = var.synthetics_status
 }
@@ -88,7 +88,7 @@ EOM
   tags = [
     "env:${var.env}",
     "service:${var.service_name}",
-    "Managed by Terraform"
+    "terraform:true"
   ]
   status = var.synthetics_status
 }
