@@ -1,11 +1,10 @@
 variable "env" {}
 
-variable "aws_profile" {}
+variable "aws_account_id" {
+  description = "AWS account ID"
+}
 
 variable "enabled" {
-  default = true
-}
-variable "sqs_enabled" {
   default = true
 }
 
@@ -17,49 +16,50 @@ variable "dd_app_key" {
   description = "Datadog APP Key. You can find out how to get it here: https://docs.datadoghq.com/account_management/api-app-keys/"
 }
 
-variable "namespace" {}
-
-variable "service_name" {}
+variable "monitor_type" {
+  description = "The type of the monitor. For more info visit https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/monitor"
+  default     = "metric alert"
+}
 
 # Threshold values
-
-variable "sqs_normal_value" {
-  description = ""
-  default = 0
+variable "sqs_normal_threshold" {
+  description = "The length of the message queue which is considered normal. For more information visit: https://docs.datadoghq.com/integrations/amazon_sqs/"
+  default     = 0
 }
 
-variable "sqs_warning_value" {
-  description = ""
-  default = 2
+variable "sqs_warning_threshold" {
+  description = "The length of the message queue which is considered warning. For more information visit: https://docs.datadoghq.com/integrations/amazon_sqs/ "
+  default     = 2
 }
 
-variable "sqs_critical_value" {
-  description = ""
-  default = 10
+variable "sqs_critical_threshold" {
+  description = "In minutes. Message queue length that causes critical alert. For more information visit: https://docs.datadoghq.com/integrations/amazon_sqs/"
+  default     = 10
 }
 
 # SQS queue settings
 variable "sqs_threshold_duration" {
-  description = ""
-  default = "last_10m"
+  description = "Duration of SQS threshold. Interval during which the measurement is carried out"
+  default     = "last_5m"
 }
 
 variable "sqs_queue_metric" {
-  description = "see https://www.datadoghq.com/blog/monitor-amazon-sqs-message-traffic-datadog/"
-  default = "approximate_number_of_messages_visible"
+  description = "To create queue see https://www.datadoghq.com/blog/monitor-amazon-sqs-message-traffic-datadog/"
+  default     = "avg:aws.sqs.approximate_number_of_messages_visible"
 }
 
-variable "queuename" {
-  description = "Name of the SQS queue"
-  default = "<queuename>"
+variable "queue_name" {
+  description = "The name of the message queue being monitored."
 }
+
 ###
+
 variable "renotify_interval" {
-  description = "In minutes"
-  default = 5
+  description = "The number of minutes after the last notification before a monitor will re-notify on the current status. For more info please visit: https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/monitor"
+  default     = 5
 }
 
-variable "target_names" {
-  description = "List of targets to inform. For example it could be @slack-alerts or @user:name@somemail.com. For more info visit https://docs.datadoghq.com/monitors/notifications/?tab=is_alert#notifications"
+variable "notification_targets" {
+  description = "List of targets to notify. For example it could be @slack-alerts or @user@somemail.com. For more info visit https://docs.datadoghq.com/monitors/notifications/?tab=is_alert#notifications"
   type        = list
 }

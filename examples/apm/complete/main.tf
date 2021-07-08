@@ -14,7 +14,7 @@ module "datadog_apm_monitor" {
   error_metric               = "trace.flask.request"
   error_threshold_duration   = "last_10m"
   error_alert_threshold      = "> 0.05"
-  target_names = [
+  notification_targets = [
     "@slack-alerts",
     "@user@somemail.com"
   ]

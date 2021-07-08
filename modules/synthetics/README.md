@@ -1,7 +1,7 @@
-# Terraform datadog synthetics monitor
+# Terraform Datadog synthetics monitor
 
 ## This module:
-- Creates datadog website synthetics `browser test`, `api test` and `api test with SSL` in Datadog. 
+- Creates Datadog website synthetics `browser test`, `api test` and `api test with SSL` in Datadog. 
 - You can monitor information in your Datadog account.
 - You will receive messages about changing the status.
 
@@ -27,7 +27,7 @@ module "datadog_synthetics" {
   name            = "Frontend Test"
   service_name    = "your-service"
   synthetics_url  = "https://someurl.com"
-  target_names = [
+  notification_targets = [
     "@slack-alerts",
     "@user@somemail.com"
   ]
@@ -36,7 +36,7 @@ module "datadog_synthetics" {
 
 #### Complete:
 ```hcl
-module "datadog_synthetics_test" {
+module "datadog_synthetics" {
   source                            = "hazelops/monitoring/datadog//modules/synthetics"
   enabled                           = true
   dd_api_key                        = "Datadog API Key"
@@ -63,9 +63,9 @@ module "datadog_synthetics_test" {
   ssl_assertion_operator            = "isInMoreThan"
   ssl_assertion_target              = 30
   synthetics_status                 = "live"
-  target_names = [
+  notification_targets = [
     "@slack-alerts",
-    "@user:user@somemail.com"
+    "@user@somemail.com"
   ]
 }
 ```
@@ -109,6 +109,7 @@ No modules.
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_env"></a> [env](#input\_env) | n/a | `any` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | n/a | `any` | n/a | yes |
+| <a name="input_notification_targets"></a> [notification\_targets](#input\_notification\_targets) | List of targets to inform. For example it could be @slack-alerts or @user:name@somemail.com. For more info visit https://docs.datadoghq.com/monitors/notifications/?tab=is_alert#notifications | `list` | n/a | yes |
 | <a name="input_service_name"></a> [service\_name](#input\_service\_name) | n/a | `any` | n/a | yes |
 | <a name="input_ssl_assertion_operator"></a> [ssl\_assertion\_operator](#input\_ssl\_assertion\_operator) | n/a | `string` | `"isInMoreThan"` | no |
 | <a name="input_ssl_assertion_target"></a> [ssl\_assertion\_target](#input\_ssl\_assertion\_target) | n/a | `number` | `30` | no |
@@ -124,7 +125,6 @@ No modules.
 | <a name="input_synthetics_subtype"></a> [synthetics\_subtype](#input\_synthetics\_subtype) | n/a | `string` | `"http"` | no |
 | <a name="input_synthetics_type"></a> [synthetics\_type](#input\_synthetics\_type) | n/a | `string` | `"browser"` | no |
 | <a name="input_synthetics_url"></a> [synthetics\_url](#input\_synthetics\_url) | n/a | `any` | n/a | yes |
-| <a name="input_target_names"></a> [target\_names](#input\_target\_names) | List of targets to inform. For example it could be @slack-alerts or @user:name@somemail.com. For more info visit https://docs.datadoghq.com/monitors/notifications/?tab=is_alert#notifications | `list` | n/a | yes |
 
 ## Outputs
 

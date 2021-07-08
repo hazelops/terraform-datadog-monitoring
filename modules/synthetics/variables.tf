@@ -16,7 +16,7 @@ variable "name" {}
 
 variable "service_name" {}
 
-variable "target_names" {
+variable "notification_targets" {
   description = "List of targets to inform. For example it could be @slack-alerts or @user:name@somemail.com. For more info visit https://docs.datadoghq.com/monitors/notifications/?tab=is_alert#notifications"
   type        = list
 }

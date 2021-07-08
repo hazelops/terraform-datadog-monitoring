@@ -16,7 +16,7 @@ resource "datadog_synthetics_test" "test_browser" {
 {{#is_no_data}}Not receiving data on ${var.synthetics_url}{{/is_no_data}}
 {{#is_alert}}${var.synthetics_alert_down_message} ${var.synthetics_url}{{/is_alert}}
 {{^is_alert}}${var.synthetics_alert_up_message} ${var.synthetics_url}{{/is_alert}}
-${join(" ", var.target_names)}
+${join(" ", var.notification_targets)}
 EOM
   tags = [
     "env:${var.env}",
@@ -49,7 +49,7 @@ resource "datadog_synthetics_test" "test_api" {
 {{#is_no_data}}Not receiving data on ${var.synthetics_url}{{/is_no_data}}
 {{#is_alert}}${var.synthetics_alert_down_message} ${var.synthetics_url}{{/is_alert}}
 {{^is_alert}}${var.synthetics_alert_up_message} ${var.synthetics_url}{{/is_alert}}
-${join(" ", var.target_names)}
+${join(" ", var.notification_targets)}
 EOM
   tags = [
     "env:${var.env}",
@@ -83,7 +83,7 @@ resource "datadog_synthetics_test" "test_ssl" {
 {{#is_no_data}}Not receiving data on ${var.synthetics_url}{{/is_no_data}}
 {{#is_alert}}${var.synthetics_alert_down_message} ${var.synthetics_url}{{/is_alert}}
 {{^is_alert}}${var.synthetics_alert_up_message} ${var.synthetics_url}{{/is_alert}}
-${join(" ", var.target_names)}
+${join(" ", var.notification_targets)}
 EOM
   tags = [
     "env:${var.env}",

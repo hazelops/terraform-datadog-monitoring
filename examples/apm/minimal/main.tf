@@ -4,7 +4,7 @@ module "datadog_apm_monitor" {
   dd_app_key   = "Datadog APP Key"
   env          = "your-environment"
   service_name = "your-service"
-  target_names = [
+  notification_targets = [
     "@slack-alerts",
     "@user@somemail.com"
   ]

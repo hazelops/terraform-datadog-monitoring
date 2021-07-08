@@ -15,7 +15,7 @@ resource "datadog_monitor" "latency_monitor" {
 {{#is_no_data}}Not receiving data on ${var.env}:${var.service_name}{{/is_no_data}}
 {{#is_alert}}Latency is high on ${var.env}:${var.service_name}{{/is_alert}}
 {{#is_recovery}}Latency is back to normal on ${var.env}:${var.service_name}{{/is_recovery}}
-${join(" ", var.target_names)}
+${join(" ", var.notification_targets)}
 EOM
 }
 
@@ -36,6 +36,6 @@ resource "datadog_monitor" "error_rate_monitor" {
 {{#is_no_data}}Not receiving data on ${var.env}:${var.service_name}{{/is_no_data}}
 {{#is_alert}}Error rate is high on ${var.env}:${var.service_name}{{/is_alert}}
 {{#is_recovery}}Error rate is back to normal on ${var.env}:${var.service_name}{{/is_recovery}}
-${join(" ", var.target_names)}
+${join(" ", var.notification_targets)}
 EOM
 }

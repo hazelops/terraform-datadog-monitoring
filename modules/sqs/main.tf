@@ -1,32 +1,34 @@
 # Creates SQS monitor alert
-resource "datadog_monitor" "queue_size_critical" {
+resource "datadog_monitor" "sqs_queue_size" {
+  count               = var.enabled ? 1 : 0
+  name                = "Too many messages in queue ${var.env}-${var.queue_name}"
+  type                = var.monitor_type
+  notify_no_data      = true
+  require_full_window = false
+  include_tags        = true
+  renotify_interval   = var.renotify_interval
+  query               = "avg(${var.sqs_threshold_duration}):${var.sqs_queue_metric}{aws_account:${var.aws_account_id},queuename:${var.queue_name}} > ${var.sqs_critical_threshold}"
 
-  name    = "too many messages in queue"
-  query   = "max(${var.sqs_threshold_duration}):max:aws.sqs.${var.sqs_queue_metric}{aws_account:${var.aws_profile},queuename:${var.queuename} > ${var.sqs_critical_value}"
-  type    = "metric alert"
-  thresholds = {
-    ok = var.sqs_normal_value
-    warning = var.sqs_warning_value
-    critical = var.sqs_critical_value
+  monitor_thresholds {
+    ok       = var.sqs_normal_threshold
+    warning  = var.sqs_warning_threshold
+    critical = var.sqs_critical_threshold
   }
-  renotify_interval = var.renotify_interval
+
   tags = [
     "env:${var.env}",
-    "service:${var.service_name}",
+    "service:${var.queue_name}",
     "terraform:true"
   ]
-  message = <<EOM
-{{#is_no_data}}Not receiving data on ${var.env}:${var.service_name}{{/is_no_data}}
-{{#is_warning}}SQS queue size on ${var.env}:${var.service_name} is more than ${var.sqs_warning_value} {{/is_warning}}
-{{#is_alert}}SQS queue size on ${var.env}:${var.service_name} is more than ${var.sqs_critical_value} {{/is_alert}}
-{{#is_recovery}}SQS queue size on ${var.env}:${var.service_name} is back to normal{{/is_recovery}}
-${join(" ", var.target_names)}
+  message            = <<EOM
+{{#is_no_data}}Monitor doesn't have data on ${var.env}-${var.queue_name}{{/is_no_data}}
+{{#is_warning}}SQS queue size on ${var.env}-${var.queue_name} is more than ${var.sqs_warning_threshold} {{/is_warning}}
+{{#is_alert}}SQS queue '${var.queue_name}' size on ${var.env}-${var.queue_name} is more than ${var.sqs_critical_threshold} {{/is_alert}}
+${join(" ", var.notification_targets)}
 EOM
-
-
-}
-
-
-data "aws_sqs_queue" "this" {
-  name = "queuename"
+  escalation_message = <<EOM
+SQS queue '${var.queue_name}' size on ${var.env}-${var.queue_name} is back to normal.
+However, please check SQS queue at ${var.env}-${var.queue_name}
+${join(" ", var.notification_targets)}
+EOM
 }
