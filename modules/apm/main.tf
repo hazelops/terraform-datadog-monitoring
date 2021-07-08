@@ -12,7 +12,7 @@ resource "datadog_monitor" "latency_monitor" {
     "terraform:true"
   ]
   message = <<EOM
-{{#is_no_data}}Not receiving data on ${var.env}:${var.service_name}{{/is_no_data}}
+{{#is_no_data}}Monitor doesn't have data on ${var.env}:${var.service_name}{{/is_no_data}}
 {{#is_alert}}Latency is high on ${var.env}:${var.service_name}{{/is_alert}}
 {{#is_recovery}}Latency is back to normal on ${var.env}:${var.service_name}{{/is_recovery}}
 ${join(" ", var.notification_targets)}
@@ -33,7 +33,7 @@ resource "datadog_monitor" "error_rate_monitor" {
     "terraform:true"
   ]
   message = <<EOM
-{{#is_no_data}}Not receiving data on ${var.env}:${var.service_name}{{/is_no_data}}
+{{#is_no_data}}Monitor doesn't have data on ${var.env}:${var.service_name}{{/is_no_data}}
 {{#is_alert}}Error rate is high on ${var.env}:${var.service_name}{{/is_alert}}
 {{#is_recovery}}Error rate is back to normal on ${var.env}:${var.service_name}{{/is_recovery}}
 ${join(" ", var.notification_targets)}
