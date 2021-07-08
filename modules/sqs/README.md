@@ -8,7 +8,8 @@
 
 ## Usage:
 
-You can use [examples](./../../examples/sqs).
+ - Setup Datadog integration with AWS. Full guide is located [here](https://docs.datadoghq.com/integrations/amazon_sqs/)
+ - After you setup integration with AWS, you can use [examples](./../../examples/sqs).
 
 ## Examples:
 
