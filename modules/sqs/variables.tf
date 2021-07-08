@@ -21,6 +21,11 @@ variable "monitor_type" {
   default     = "metric alert"
 }
 
+variable "notify_no_data" {
+  description = "A boolean indicating whether this monitor will notify when data stops reporting"
+  default = false
+}
+
 # Threshold values
 variable "sqs_normal_threshold" {
   description = "The length of the message queue which is considered normal. For more information visit: https://docs.datadoghq.com/integrations/amazon_sqs/"

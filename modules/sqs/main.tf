@@ -3,7 +3,7 @@ resource "datadog_monitor" "sqs_queue_size" {
   count               = var.enabled ? 1 : 0
   name                = "Too many messages in queue ${var.env}-${var.queue_name}"
   type                = var.monitor_type
-  notify_no_data      = true
+  notify_no_data      = var.notify_no_data
   require_full_window = false
   include_tags        = true
   renotify_interval   = var.renotify_interval
