@@ -24,7 +24,7 @@ module "apm_monitor" {
   env          = "your-environment"
   namespace    = "your-namespace"
   service_name = "your-service"
-  target_names = [
+  notification_targets = [
     "@slack-alerts",
     "@user@somemail.com"
   ]
@@ -51,7 +51,7 @@ module "apm_monitor" {
   error_metric               = "trace.flask.request"
   error_threshold_duration   = "last_10m"
   error_alert_threshold      = "> 0.05"
-  target_names = [
+  notification_targets = [
     "@slack-alerts",
     "@user@somemail.com"
   ]
@@ -88,8 +88,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_dd_api_key"></a> [dd\_api\_key](#input\_dd\_api\_key) | n/a | `any` | n/a | yes |
-| <a name="input_dd_app_key"></a> [dd\_app\_key](#input\_dd\_app\_key) | n/a | `any` | n/a | yes |
+| <a name="input_dd_api_key"></a> [dd\_api\_key](#input\_dd\_api\_key) | Datadog API Key. You can find out how to get it here: https://docs.datadoghq.com/account_management/api-app-keys/ | `any` | n/a | yes |
+| <a name="input_dd_app_key"></a> [dd\_app\_key](#input\_dd\_app\_key) | Datadog APP Key. You can find out how to get it here: https://docs.datadoghq.com/account_management/api-app-keys/ | `any` | n/a | yes |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_env"></a> [env](#input\_env) | n/a | `any` | n/a | yes |
 | <a name="input_error_alert_threshold"></a> [error\_alert\_threshold](#input\_error\_alert\_threshold) | The value used to trigger an alert notification. For more info visit https://docs.datadoghq.com/monitors/monitor_types/metric/?tab=threshold#thresholds | `string` | `"> 0.05"` | no |
@@ -102,8 +102,8 @@ No modules.
 | <a name="input_latency_threshold_duration"></a> [latency\_threshold\_duration](#input\_latency\_threshold\_duration) | Timeframe during which the comparison is made. | `string` | `"last_10m"` | no |
 | <a name="input_monitor_type"></a> [monitor\_type](#input\_monitor\_type) | The type of the monitor. For more info visit https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/monitor | `string` | `"metric alert"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | n/a | `any` | n/a | yes |
+| <a name="input_notification_targets"></a> [notification\_targets](#input\_notification\_targets) | List of targets to inform. For example it could be @slack-alerts or @user:name@somemail.com. For more info visit https://docs.datadoghq.com/monitors/notifications/?tab=is_alert#notifications | `list` | n/a | yes |
 | <a name="input_service_name"></a> [service\_name](#input\_service\_name) | n/a | `any` | n/a | yes |
-| <a name="input_target_names"></a> [target\_names](#input\_target\_names) | List of targets to inform. For example it could be @slack-alerts or @user:name@somemail.com. For more info visit https://docs.datadoghq.com/monitors/notifications/?tab=is_alert#notifications | `list` | n/a | yes |
 
 ## Outputs
 

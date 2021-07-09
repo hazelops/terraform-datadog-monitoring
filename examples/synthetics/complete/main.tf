@@ -25,7 +25,7 @@ module "datadog_synthetics_test" {
   ssl_assertion_operator            = "isInMoreThan"
   ssl_assertion_target              = 30
   synthetics_status                 = "live"
-  target_names = [
+  notification_targets = [
     "@slack-alerts",
     "@user@somemail.com"
   ]

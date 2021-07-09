@@ -1,6 +1,6 @@
 # Terraform Datadog Monitors Module
 
-Terraform module that creates Datadog alert monitors for latency and errors and Datadog synthetics tests.
+Terraform module that creates Datadog alert monitors for latency and errors, Datadog SQS alert monitor and Datadog synthetics tests
 
 ## Description
 
@@ -8,6 +8,7 @@ This module provides settings:
 
 - Create alert monitors for `latency` and `errors` in Datadog.
 - Creates Datadog website synthetics `browser test`, `api test` and `api test with SSL` in Datadog.
+- Create SQS alert monitor in Datadog
 
 ## Usage
 
@@ -19,4 +20,6 @@ To get the keys please follow this [manual](https://docs.datadoghq.com/account_m
   
 - to create Datadog website synthetics `browser test`, `api test` and `api test with SSL` please refer to this [guide](./modules/synthetics/README.md)
  
+- to create Datadog SQS monitor please refer to this [guide](./modules/sqs/README.md)
+
 Also you can find examples of using in [examples](./examples) folder.

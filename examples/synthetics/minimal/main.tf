@@ -6,7 +6,7 @@ module "datadog_synthetics" {
   name           = "Frontend Test"
   service_name   = "your-service"
   synthetics_url = "https://someurl.com"
-  target_names = [
+  notification_targets = [
     "@slack-alerts",
     "@user@somemail.com"
   ]
